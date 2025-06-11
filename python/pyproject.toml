@@ -4,9 +4,9 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = [
-    "pandas>=2.2.3",
-]
+dependencies = []
 
-[tool.ruff.lint]
-ignore = ["F401"]
+[dependency-groups]
+dev = [
+    "basedpyright>=1.29.3",
+]

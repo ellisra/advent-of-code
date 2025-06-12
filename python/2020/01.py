@@ -27,5 +27,5 @@ def part2(report: set[int]) -> int:
 
 
 if __name__ == "__main__":
-    report = set(map(int, [num for num in open("./inputs/01.txt")]))
+    report = set(map(int, [num for num in open("../../inputs/20_01.txt")]))
     print(part2(report))

@@ -17,13 +17,15 @@ fn part1(nums: &Vec<i32>) -> i32 {
 }
 
 fn part2(nums: &Vec<i32>) -> i32 {
-    for num1 in nums {
+    let nums_set = HashSet::<&i32>::new();
+
+    for (i, num1) in nums.iter().enumerate() {
         let complement1 = 2020 - num1;
 
-        for num2 in nums {
+        for num2 in nums.iter().skip(i) {
             let complement2 = complement1 - num2;
 
-            if nums.contains(&complement2) {
+            if nums_set.contains(&complement2) {
                 return num1 * num2 * complement2;
             }
         }

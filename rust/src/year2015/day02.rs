@@ -29,8 +29,9 @@ fn part1(dimensions: &[Vec<i32>]) -> i32 {
 fn part2(dimensions: &[Vec<i32>]) -> i32 {
     dimensions.iter()
         .map(|dim| {
-            let perimeters = vec![dim[0] + dim[1], dim[0] + dim[2], dim[1] + dim[2]];
-            dim[0] * dim[1] * dim[2] + 2 * perimeters.iter().min().unwrap()
+            let mut sorted_dim = dim.clone();
+            sorted_dim.sort_unstable();
+            dim[0] * dim[1] * dim[2] + 2 * (sorted_dim[0] + sorted_dim[1])
         })
         .sum()
 }

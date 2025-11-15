@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import astuple, dataclass
 
 from common.constants import INPUT_DIR
 
@@ -23,7 +23,7 @@ class Present:
 
     @property
     def smallest_perimeter(self) -> int:
-        return 2 * min([self.length + self.height, self.height + self.width, self.length + self.width])
+        return 2 * sum(sorted(astuple(self))[:-1])
 
     @classmethod
     def from_line(cls, line: str) -> Present:

@@ -1,34 +1,32 @@
-from collections import namedtuple
-
 from common.constants import INPUT_DIR
 
-Position = namedtuple('Position', ['y', 'x'])
+
+def take_step(step: str, pos: tuple[int, int]) -> tuple[int, int]:
+    directions = {
+        '>': (0, 1),
+        'v': (1, 0),
+        '<': (0, -1),
+        '^': (-1, 0),
+    }
+    delta = directions[step]
+
+    return pos[0] + delta[0], pos[1] + delta[1]
 
 
-def step(pos: Position, direction: str) -> Position:
-    if direction == '^':
-        return Position(pos.y - 1, pos.x)
-    elif direction == 'V':
-        return Position(pos.y + 1, pos.x)
-    elif direction == '>':
-        return Position(pos.y, pos.x + 1)
-    else:
-        return Position(pos.y, pos.x - 1)
+def count_unique(steps: list[str]) -> set[tuple[int, int]]:
+    current_pos = (0, 0)
+    positions: set[tuple[int, int]] = set()
+    positions.add(current_pos)
+    for step in steps:
+        current_pos = take_step(step, current_pos)
+        positions.add(current_pos)
 
-
-def part1(data: list[str]) -> int:
-    current_pos = Position(y=0, x=0)
-    houses: set[Position] = set(current_pos)
-
-    for move in data:
-        current_pos = step(current_pos, move)
-        houses.add(current_pos)
-
-    return len(houses)
+    return positions
 
 
 if __name__ == '__main__':
     with open(INPUT_DIR + '2015/day03.txt', 'r') as file:
         data = list(file.read().strip())
 
-    print(f"Part 1: {part1(data)}")
+    print(f"Part 1: {len(count_unique(data))}")
+    print(f"Part 2: {len(count_unique(data[::2]) | count_unique(data[1::2]))}")

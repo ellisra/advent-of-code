@@ -1,11 +1,6 @@
-from common.constants import INPUT_DIR
+import re
 
-TEST = [
-    'qjhvhtzxzqqjkmpb',
-    'xxyxx',
-    'uurcxstgmygtbstg',
-    'ieodomkazucvgmuy',
-]
+from common.constants import INPUT_DIR
 
 VOWELS = { 'a', 'e', 'i', 'o', 'u' }
 BANNED_STRINGS = { 'ab', 'cd', 'pq', 'xy' }
@@ -56,7 +51,7 @@ def part_two(lines: list[str]) -> int:
 
 if __name__ == '__main__':
     with open(INPUT_DIR + '2015/day05.txt', 'r') as file:
-        lines = file.read().splitlines()
+        text = file.read()
 
-    print(f"Part 1: {part_one(lines)}")
-    print(f"Part 2: {part_two(lines)}")
+    print(f"Part 1: {len(re.findall(r"^(?=\w*([a-z])\1\w*)(?!.*(?:ab|cd|pq|xy))(?:.*[aeiou]){3}.*$", text, re.MULTILINE))}")
+    print(f"Part 2: {len(re.findall(r"^(?=.*([a-z]{2}).*\1)(?=.*([a-z]).\2).*$", text, re.MULTILINE))}")

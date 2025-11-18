@@ -21,10 +21,9 @@ fn take_step(step: &char, pos: (i32, i32)) -> (i32, i32) {
 fn count_unique(steps: &[char]) -> HashSet<(i32, i32)> {
     let mut current_pos = (0, 0);
     let mut positions = HashSet::new();
-    positions.insert(current_pos);
     for step in steps {
-        current_pos = take_step(step, current_pos);
         positions.insert(current_pos);
+        current_pos = take_step(step, current_pos);
     }
 
     positions

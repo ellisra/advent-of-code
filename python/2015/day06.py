@@ -14,7 +14,7 @@ class Instruction:
 
 
 def parse_instructions(instructions: list[str]) -> list[Instruction]:
-    parsed_instructions = []
+    parsed_instructions: list[Instruction] = []
     for instruction in instructions:
         instruction = instruction.split(' ')
         if instruction[0] == 'turn':

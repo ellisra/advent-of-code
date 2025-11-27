@@ -21,6 +21,7 @@ fn dispatch(year: u32, day: u32) {
         (2015, 4) => year2015::day04::run(),
         (2015, 5) => year2015::day05::run(),
         (2015, 6) => year2015::day06::run(),
+        (2015, 10) => year2015::day10::run(),
         _ => panic!("Unknown year/day combination"),
     }
 }

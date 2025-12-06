@@ -1,5 +1,6 @@
 mod utils;
 mod year2015;
+mod year2025;
 
 fn main() {
     let args: Vec<String> = std::env::args().collect();
@@ -22,6 +23,9 @@ fn dispatch(year: u32, day: u32) {
         (2015, 5) => year2015::day05::run(),
         (2015, 6) => year2015::day06::run(),
         (2015, 10) => year2015::day10::run(),
+
+        (2025, 1) => year2025::day01::run(),
+        (2025, 2) => year2025::day02::run(),
         _ => panic!("Unknown year/day combination"),
     }
 }

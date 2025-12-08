@@ -36,8 +36,8 @@ def get_shortest_path(flatmap: dict[tuple[int, int], int], points: list[Point]) 
 
 
 if __name__ == '__main__':
-    # with open('2025/example.txt') as file:
-    with open('../inputs/2025/day08.txt') as file:
+    with open('2025/example.txt') as file:
+    # with open('../inputs/2025/day08.txt') as file:
         points = [Point.from_line(line) for line in file]
 
     get_distance: Callable[[Point, Point], int] = lambda a, b: (a.x - b.x)**2 + (a.y - b.y)**2 + (a.z - b.z)**2
@@ -51,7 +51,6 @@ if __name__ == '__main__':
         }
 
     flatmap: dict[tuple[int, int], int] = {(min(ok, ik), max(ok, ik)): v for ok, inner in distance_map.items() for ik, v in inner.items()}
-    print(len(flatmap))
-    quit()
-    for i in range(1000):
-        print(get_shortest_path(flatmap, points))
+    sorted_flatmap = sorted(flatmap.items(), key=lambda x: x[1])
+
+    print(sorted_flatmap[:11])

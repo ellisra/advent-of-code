@@ -1,4 +1,6 @@
 CompileFlags:
-  Add: [-std=c++23]
+  Add:
+    - -I.
+    - -std=c++23
 Completion:
   CodePatterns: None

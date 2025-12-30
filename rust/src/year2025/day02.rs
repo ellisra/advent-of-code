@@ -30,6 +30,7 @@ fn part_one(ranges: &[(usize, usize)]) -> usize {
 }
 
 fn part_two(ranges: &[(usize, usize)]) -> usize {
+    // FIXME: This pattern uses a backreference, which is not supported by the regex crate
     let re = Regex::new(r"^(.+)\1+$").expect("Invalid regex");
     ranges
         .iter()
